@@ -13,6 +13,7 @@
   - [Training](#training)
   - [Prediction](#prediction)
   - [DEMO](#demo)
+  - [Conclusion](#conclusion)
 
 
 ## Abstract
@@ -55,7 +56,7 @@ By this method, I've generated 2000 tiles which will be used as the input for da
 <img src="docs/tiles_example.png" alt="image" width="70%" height="auto">
 </center>
 
-This porcess is covered by the `data/tile_gen.py` script.
+This process is covered by the `data/tile_gen.py` script.
  
  ``` bash
  python3 tile_gen.py --image ../0_0.png --tile_size 1024
@@ -77,7 +78,7 @@ The sequence is then loaded images are downscaled to 256x256px and normalized to
 ### Training
 Since I based the Meteonet on the PVDM project, the training process is mostly the same except minor facts. I am using only the Vit autoencoder part of the PVDM and even it is edited in order to support sequence to sequence prediction, which means that the input and output of the network are not the same. The input is a sequence of radar images and the output is a predicted radar images. 
 
-When training meteonet I've used pretrained weights from the PVDM project and only ommited the input and output layer of the network, because of different dimensionality. The input and output layer are then trained from scratch. Hence the --partial-load argument in the training script.
+When training meteonet I've used pretrained weights from the PVDM project and only omitted the input and output layer of the network, because of different dimensionality. The input and output layer are then trained from scratch. Hence the --partial-load argument in the training script.
 
 The training duration is thanks to using pretrained weights significantly shorter than training and in the end the whole network is trained in scope of 2 days on a single GPU (Nvidia A100 40GB).
 
@@ -107,7 +108,7 @@ Prediction:
     - Second tile set is a set of tiles which divides the world with 128px (half of tile size) offset in x axis.
     - Third tile set is a set of tiles which divides the world with 128px (half of tile size) offset in y axis.
     - Fourth tile set is a set of tiles which divides the world with 128px (half of tile size) offset in x and y axis.
-  The logic behind the tile sets is to cover the whole world with the tiles and also to cover situations that happening on tile crossing. Lets say there is a cloud which is transitioning from one tlile to another. Without intersecting tile the information transfer would be impossible.
+  The logic behind the tile sets is to cover the whole world with the tiles and also to cover situations that happening on tile crossing. Lets say there is a cloud which is transitioning from one tile to another. Without intersecting tile the information transfer would be impossible.
   - We will extract image sequences per tile and filter out those which are mostly empty, to speed up the prediction.
   - We will use the model to perform the prediction for every prepared tile.
   - Now only thing we need to do is to blend images into single image.
