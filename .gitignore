@@ -1,0 +1,48 @@
+# Ignore compiled Python files
+*.pyc
+*.pyo
+__pycache__
+
+# Ignore the Django secret key
+*.secret_key
+
+# Ignore static files collected by Django
+/staticfiles/
+
+# Ignore media files uploaded by users
+/TensorCloud/media/*
+
+# Ignore database files
+*.sqlite3
+
+# Ignore local development settings
+/settings_local.py
+
+# Ignore virtual environment directories
+venv/
+env/
+.venv/
+
+# Ignore IDE and editor-specific files
+.idea/
+.vscode/
+*.sublime-workspace
+*.sublime-project
+
+# Ignore deployment and hosting directories
+/.elasticbeanstalk/
+/.ebextensions/
+/.heroku/
+/.netlify/
+
+# Ignore log files
+*.log
+
+# Ignore sensitive configuration files
+*.env
+
+dump.rdb
+
+.DS_store
+
+test/
