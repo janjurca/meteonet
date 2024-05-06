@@ -192,7 +192,7 @@ def grid_stack_images(directory, output_path, cols=3):
 
         frames.append(frame)
     
-    imageio.mimsave(output_path, frames, duration=500)
+    imageio.mimsave(output_path, frames, duration=500, loop=0)
             
             
 
@@ -208,6 +208,6 @@ if __name__ == "__main__":
     args = parser.parse_args()
     MODEL = ViTAutoencoder(embed_dim=4, ddconfig=config)
     MODEL.load_state_dict(torch.load(args.checkpoint, map_location="cpu"))
-    main(args)
+    #main(args)
 
     grid_stack_images("gifs", "matrix.gif")
