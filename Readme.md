@@ -114,6 +114,14 @@ Prediction:
   - Now only thing we need to do is to blend images into single image.
   - The blending process is based on the fact that the tiles are overlapping, Which means that we have a multilayered image. The blending process itself takes a median pixel value from all layers. 
 
+
+Whole process is covered by the `inference.py` script. The script is capable of predicting the weather radar images for the next 2 hours. The prediction is based on the past 12 radar images with a time stride of 10 minutes. 
+
+``` bash
+python3 -m inference
+```
+Script will download the past 12 radar images from RainViewer and perform the prediction. The prediction is then saved.
+
 ### DEMO
 And now stop with those blank words and let's see the prediction in action. Here I present multiple single tile predictions (in form of gif image) where the past (input data) as well as the unseen reality (ground truth) are shown. The prediction is based on the past 12 radar images with a time stride of 10 minutes. 
 

@@ -231,7 +231,7 @@ def main(args):
         
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--tiles", type=str, default="infer_tiles.json")
+    parser.add_argument("--tiles", type=str, default="inference_tiles.json")
     parser.add_argument("--resolution", type=int, default=256)
     parser.add_argument("--save", type=str, default="output")
     parser.add_argument("--log", type=str, default="INFO")
